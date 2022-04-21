@@ -1,7 +1,21 @@
 import React from 'react'
 import { useGameStatus } from '../hooks/useGameStatus'
-import { Board } from './board'
+import { board, Board } from './board'
 import { calculateWinner } from '../functions/calculateWinner'
+
+
+const showState = (squares: board, xIsNext: boolean) => {
+  let status = ''
+  if (calculateWinner(squares)) {
+    const winner = xIsNext ? 'O' : 'X'
+    status = `Winner is ${winner}`
+  } else {
+    const turn = xIsNext ? 'X' : 'O'
+    status = `Next player: ${turn}`
+  }
+
+  return status
+}
 
 export const Game: React.FunctionComponent = () => {
   const { state, updateState } = useGameStatus()
@@ -33,14 +47,6 @@ export const Game: React.FunctionComponent = () => {
 
   const history = state.history
   const current = history[state.stepNumber]
-  let status = ''
-  if (calculateWinner(current.squares)) {
-    const winner = state.xIsNext ? 'O' : 'X'
-    status = `Winner is ${winner}`
-  } else {
-    const turn = state.xIsNext ? 'X' : 'O'
-    status = `Next player: ${turn}`
-  }
 
   const moves = history.map((step, move) => {
     const desc = move ? 'Go to move #' + String(move) : 'Go to game start'
@@ -57,7 +63,7 @@ export const Game: React.FunctionComponent = () => {
         <Board squares={current.squares} onClick={(i) => handleClick(i)} />
       </div>
       <div className="game-info">
-        <div>{status}</div>
+        <div>{showState(current.squares, state.xIsNext)}</div>
         <ol>{moves}</ol>
       </div>
     </div>
