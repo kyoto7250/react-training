@@ -9,10 +9,10 @@ type Props = {
 }
 
 export const Board: React.FunctionComponent<Props> = (
-  props: Props
+  {squares, onClick}: Props
 ) => {
   function renderSquare(i: number) {
-    return <Square value={props.squares[i]} onClick={() => props.onClick(i)} />
+    return <Square value={squares[i]} onClick={() => onClick(i)} />
   }
 
   return (
