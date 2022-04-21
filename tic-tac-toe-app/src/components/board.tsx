@@ -1,13 +1,15 @@
 import React from 'react'
 import { Square } from '../functions/square'
 
-interface BoardProps {
-  squares: Array<string | null>
+type board = Array<string | null>
+
+type Props = {
+  squares: board
   onClick: (_: number) => void
 }
 
-export const Board: React.FunctionComponent<BoardProps> = (
-  props: BoardProps
+export const Board: React.FunctionComponent<Props> = (
+  props: Props
 ) => {
   function renderSquare(i: number) {
     return <Square value={props.squares[i]} onClick={() => props.onClick(i)} />
