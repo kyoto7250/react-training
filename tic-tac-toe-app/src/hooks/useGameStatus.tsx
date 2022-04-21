@@ -1,17 +1,13 @@
 import { useState, useCallback } from 'react'
+import { board } from "../components/board";
 
-interface GameState {
-  history: Array<{ squares: Array<string | null> }>
+type GameState = {
+  history: Array<{ squares: board }>
   xIsNext: boolean
   stepNumber: number
 }
 
-export type useGameStatusReturnType = {
-  state: GameState
-  updateState: (_: GameState) => void
-}
-
-export const useGameStatus = (): useGameStatusReturnType => {
+export const useGameStatus = () => {
   const [state, setState] = useState<GameState>({
     history: [{ squares: Array(9).fill(null) }],
     xIsNext: true,

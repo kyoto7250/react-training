@@ -1,7 +1,7 @@
 import React from 'react'
 import { Square } from '../functions/square'
 
-type board = Array<string | null>
+export type board = Array<string | null>
 
 type Props = {
   squares: board
