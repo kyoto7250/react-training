@@ -48,7 +48,7 @@ export const Game: React.FunctionComponent = () => {
   const history = state.history
   const current = history[state.stepNumber]
 
-  const moves = history.map((step, move) => {
+  const moves = history.map((_, move) => {
     const desc = move ? 'Go to move #' + String(move) : 'Go to game start'
     return (
       <li key={move}>
