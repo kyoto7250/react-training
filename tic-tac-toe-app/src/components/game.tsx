@@ -1,5 +1,5 @@
 import React from 'react'
-import { useGameStatus } from '../hooks/useGameStatus'
+import { useGameStatus } from '../hooks/useGameStatus/hook'
 
 
 
