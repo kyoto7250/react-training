@@ -4,7 +4,7 @@ import { board, Board } from './board'
 import { calculateWinner } from '../functions/calculateWinner'
 
 
-const showState = (squares: board, xIsNext: boolean) => {
+const showSentence = (squares: board, xIsNext: boolean) => {
   let status = ''
   if (calculateWinner(squares)) {
     const winner = xIsNext ? 'O' : 'X'
@@ -17,12 +17,8 @@ const showState = (squares: board, xIsNext: boolean) => {
   return status
 }
 
-export const Game: React.FunctionComponent = () => {
-  const { state, jumpTo, handleClick } = useGameStatus()
-  const history = state.history
-  const current = history[state.stepNumber]
-
-  const moves = history.map((_, move) => {
+const showMove = (history: Array<{squares: board}>, jumpTo: (_: number) => void) => {
+  const move = history.map((_, move) => {
     const desc = move ? 'Go to move #' + String(move) : 'Go to game start'
     return (
       <li key={move}>
@@ -31,14 +27,22 @@ export const Game: React.FunctionComponent = () => {
     )
   })
 
+  return move
+}
+
+export const Game: React.FunctionComponent = () => {
+  const { state, jumpTo, handleClick } = useGameStatus()
+  const history = state.history
+  const current = history[state.stepNumber]
+
   return (
     <div className="game">
       <div className="game-board">
         <Board squares={current.squares} onClick={(i) => handleClick(i)} />
       </div>
       <div className="game-info">
-        <div>{showState(current.squares, state.xIsNext)}</div>
-        <ol>{moves}</ol>
+        <div>{showSentence(current.squares, state.xIsNext)}</div>
+        <ol>{showMove(history, jumpTo)}</ol>
       </div>
     </div>
   )
