@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react'
-import { board, Board } from "../../components/board";
-import { generateNextState, showSentence, showMove } from './utils';
+import { board } from "../../components/board";
+import { generateNextState } from './utils';
 
 type GameState = {
     history: Array<{ squares: board }>
@@ -36,18 +36,11 @@ export const useGameStatus = () => {
 
     function jumpTo(step: number) {
         updateState({
-        history: state.history,
-        stepNumber: step,
-        xIsNext: step % 2 === 0,
+            history: state.history,
+            stepNumber: step,
+            xIsNext: step % 2 === 0,
         })
     }
 
-    const history = state.history
-    const current = history[state.stepNumber]
-    const sentence = showSentence(current.squares, state.xIsNext)
-    const moves = showMove(history, jumpTo)
-    const board = <Board squares={current.squares} onClick={(i) => handleClick(i)} />
-
-
-    return { board, sentence, moves }
+    return { state, jumpTo, handleClick }
 }
