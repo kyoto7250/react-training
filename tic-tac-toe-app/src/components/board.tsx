@@ -8,29 +8,29 @@ type Props = {
   onClick: (_: number) => void
 }
 
+const renderSquare = (i: number, squares: board, onClick: (_: number) => void) => {
+  return <Square value={squares[i]} onClick={() => onClick(i)} />
+}
+
 export const Board: React.FunctionComponent<Props> = (
   {squares, onClick}: Props
 ) => {
-  function renderSquare(i: number) {
-    return <Square value={squares[i]} onClick={() => onClick(i)} />
-  }
-
   return (
     <div>
       <div className="board-row">
-        {renderSquare(0)}
-        {renderSquare(1)}
-        {renderSquare(2)}
+        {renderSquare(0, squares, onClick)}
+        {renderSquare(1, squares, onClick)}
+        {renderSquare(2, squares, onClick)}
       </div>
       <div className="board-row">
-        {renderSquare(3)}
-        {renderSquare(4)}
-        {renderSquare(5)}
+        {renderSquare(3, squares, onClick)}
+        {renderSquare(4, squares, onClick)}
+        {renderSquare(5, squares, onClick)}
       </div>
       <div className="board-row">
-        {renderSquare(6)}
-        {renderSquare(7)}
-        {renderSquare(8)}
+        {renderSquare(6, squares, onClick)}
+        {renderSquare(7, squares, onClick)}
+        {renderSquare(8, squares, onClick)}
       </div>
     </div>
   )
