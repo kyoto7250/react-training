@@ -18,33 +18,7 @@ const showState = (squares: board, xIsNext: boolean) => {
 }
 
 export const Game: React.FunctionComponent = () => {
-  const { state, updateState } = useGameStatus()
-  function handleClick(i: number) {
-    const history = state.history.slice(0, state.stepNumber + 1)
-    const current = history[history.length - 1]
-    if (calculateWinner(current.squares) || current.squares[i] != null) {
-      return
-    }
-    const next_squares = current.squares.slice()
-    const sign = state.xIsNext ? 'X' : 'O'
-    next_squares[i] = sign
-
-    const next_history = history.concat([{ squares: next_squares }])
-    updateState({
-      history: next_history,
-      xIsNext: !state.xIsNext,
-      stepNumber: history.length,
-    })
-  }
-
-  function jumpTo(step: number) {
-    updateState({
-      history: state.history,
-      stepNumber: step,
-      xIsNext: step % 2 === 0,
-    })
-  }
-
+  const { state, jumpTo, handleClick } = useGameStatus()
   const history = state.history
   const current = history[state.stepNumber]
 
