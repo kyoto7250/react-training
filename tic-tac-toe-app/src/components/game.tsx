@@ -5,7 +5,6 @@ import { useGameStatus } from '../hooks/useGameStatus/hook'
 
 export const Game: React.FunctionComponent = () => {
   const { board, sentence, moves } = useGameStatus()
-
   return (
     <div className="game">
       <div className="game-board">

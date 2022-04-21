@@ -13,11 +13,9 @@ describe('useGameStatus', () => {
     })
 
     test('check init value', () => {
-        // expect(result.current.board).toEqual([
-        //   { squares: Array(9).fill(null) },
-        // ])
+        expect(result.current.board).toMatchSnapshot()
         expect(result.current.sentence).toBe("Next player: X")
-        // expect(result.current.state.moves).toBe(true)
+        expect(<>{result.current.moves}</>).toMatchSnapshot()
     })
 })
 
