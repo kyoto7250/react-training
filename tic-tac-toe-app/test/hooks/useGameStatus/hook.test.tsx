@@ -13,9 +13,11 @@ describe('useGameStatus', () => {
     })
 
     test('check init value', () => {
-        expect(result.current.board).toMatchSnapshot()
-        expect(result.current.sentence).toBe("Next player: X")
-        expect(<>{result.current.moves}</>).toMatchSnapshot()
+        expect(result.current.state).toStrictEqual({
+            "history": [{squares: Array(9).fill(null)}],
+            "xIsNext": true,
+            "stepNumber": 0
+        })
     })
 })
 
