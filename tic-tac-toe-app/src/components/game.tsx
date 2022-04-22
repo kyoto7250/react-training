@@ -6,7 +6,6 @@ import { Board } from "../components/board";
 
 export const Game: React.FunctionComponent = () => {
   const { state, jumpTo, handleClick } = useGameStatus()
-
   const current = state.history[state.stepNumber]
   const moves = showMove(state.history, jumpTo)
   const sentence = showSentence(current.squares, state.xIsNext)
