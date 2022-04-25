@@ -18,6 +18,7 @@ describe('useGameStatus', () => {
             "xIsNext": true,
             "stepNumber": 0
         })
+        expect(result.current.sentence).toBe("Next player: X")
     })
 
     test('call placePiece', () => {
@@ -30,6 +31,7 @@ describe('useGameStatus', () => {
             "xIsNext": false,
             "stepNumber": 1
         })
+        expect(result.current.sentence).toBe("Next player: O")
     })
 
     test('call jumpTo', () => {
@@ -38,6 +40,7 @@ describe('useGameStatus', () => {
             const state = {
                 history: [{squares: Array(9).fill(null)}, {squares: [null, 'X', null, null, null, null, null, null, null]}],
                 xIsNext: false,
+                sentence: "Next player: O",
                 stepNumber: 1
             }
             jest.spyOn(React, 'useState').mockImplementationOnce(() => [state, mock])
@@ -52,6 +55,7 @@ describe('useGameStatus', () => {
             "xIsNext": true,
             "stepNumber": 0
         })
+        expect(result.current.sentence).toBe("Next player: X")
     })
 })
 

@@ -183,9 +183,7 @@ Object {
         <div
           class="game-info"
         >
-          <div>
-            Next player: X
-          </div>
+          <div />
           <ol>
             <li>
               <button>
@@ -249,9 +247,7 @@ Object {
       <div
         class="game-info"
       >
-        <div>
-          Next player: X
-        </div>
+        <div />
         <ol>
           <li>
             <button>

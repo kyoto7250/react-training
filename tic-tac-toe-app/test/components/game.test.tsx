@@ -1,5 +1,5 @@
 
-import { Game, showSentence, showMove } from '../../src/components/game'
+import { Game, showMove } from '../../src/components/game'
 import { render, act } from '@testing-library/react'
 import { useGameStatus } from '../../src/hooks/useGameStatus/hook'
 jest.mock('../../src/hooks/useGameStatus/hook')
@@ -50,32 +50,6 @@ describe('Game', () => {
 })
 
 
-describe('showSentence', () => {
-  describe('not decided winner', () => {
-      const square = Array(9).fill(null)
-      test('Next Player is X', () => {
-          expect(showSentence(square, true)).toBe("Next player: X")
-      })
-
-      test('Next Player is O', () => {
-          expect(showSentence(square, false)).toBe("Next player: O")
-      })
-  })
-
-  describe('decided winner', () => {
-      test('Winner is X', () => {
-          const square = Array(9).fill('X')
-          let value = showSentence(square, false)
-          expect(value).toBe("Winner is X")
-      })
-
-      test('Winner is O', () => {
-          const square = Array(9).fill('O')
-          let value = showSentence(square, true)
-          expect(value).toBe("Winner is O")
-      })
-  })
-})
 
 
 describe("showMove", () => {

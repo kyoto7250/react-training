@@ -16,3 +16,16 @@ export const generateNextState = (i: number, history:  Array<{ squares: board }>
 
     return {history: next_history, xIsNext: !xIsNext, stepNumber: h.length}
 } 
+
+
+export const showSentence = (squares: board, xIsNext: boolean) => {
+    let status = ''
+    if (calculateWinner(squares)) {
+        const winner = xIsNext ? 'O' : 'X'
+        status = `Winner is ${winner}`
+    } else {
+        const turn = xIsNext ? 'X' : 'O'
+        status = `Next player: ${turn}`
+    }
+    return status
+}
