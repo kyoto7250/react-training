@@ -5,11 +5,11 @@ import { calculateWinner } from "../functions/calculateWinner";
 
 
 export const Game: React.FunctionComponent = () => {
-  const { state, jumpTo, handleClick } = useGameStatus()
+  const { state, jumpTo, placePiece } = useGameStatus()
   const current = state.history[state.stepNumber]
   const moves = showMove(state.history, jumpTo)
   const sentence = showSentence(current.squares, state.xIsNext)
-  const board = <Board squares={current.squares} onClick={(i) => handleClick(i)} />
+  const board = <Board squares={current.squares} onClick={(i) => placePiece(i)} />
 
   return (
     <div className="game">

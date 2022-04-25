@@ -23,7 +23,7 @@ export const useGameStatus = () => {
         })
     }, [])
 
-    const handleClick = (i: number) => {
+    const placePiece = (i: number) => {
         const x = generateNextState(i, state.history, state.stepNumber, state.xIsNext);
         if (x !== null) {
         updateState({
@@ -42,5 +42,5 @@ export const useGameStatus = () => {
         })
     }
 
-    return { state, jumpTo, handleClick }
+    return { state, jumpTo, placePiece }
 }

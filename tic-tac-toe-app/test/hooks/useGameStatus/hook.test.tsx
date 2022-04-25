@@ -20,9 +20,9 @@ describe('useGameStatus', () => {
         })
     })
 
-    test('call handleClick', () => {
+    test('call placePiece', () => {
         act(() => {
-            result.current.handleClick(1)
+            result.current.placePiece(1)
         })
 
         expect(result.current.state).toStrictEqual({

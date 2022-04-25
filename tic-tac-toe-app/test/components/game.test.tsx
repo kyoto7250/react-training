@@ -16,7 +16,7 @@ describe('Game', () => {
               stepNumber: 0
             },
             jumpTo: (_: number) => {},
-            handleClick: (_: number) => {}
+            placePiece: (_: number) => {}
           })
         );
       });
@@ -37,7 +37,7 @@ describe('Game', () => {
               stepNumber: 1
             },
             jumpTo: (_: number) => {},
-            handleClick: (_: number) => {}
+            placePiece: (_: number) => {}
           })
         );
         test('mock snapshot', () => {
